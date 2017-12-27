@@ -120,7 +120,7 @@ inherit	规定应该从父元素继承 position 属性的值。
 .userCard .pictureAndText {
     padding: 50px;
     max-width: 600px;
-    border: 1px solid red;
+    border: 1px solid pink;
     margin-left: auto;
     margin-right: auto;
     background-color: #ffffff;
