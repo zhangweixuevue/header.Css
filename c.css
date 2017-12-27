@@ -1,7 +1,7 @@
-.clearfix::after {
+.clearfix::after{
     content: '';
-    display: none;
-    clear: none;
+    display: block;
+    clear: both;
 }
 
 body {
@@ -62,6 +62,7 @@ a {
 
 .topNavBar nav ul>li>a:hover{
     border-bottom-color:#DC6465;
+    margin-bottom: 5px;
 }
 
 .banner {
@@ -90,13 +91,22 @@ relative
 static	默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）。
 inherit	规定应该从父元素继承 position 属性的值。
 */
+
+.userCard {
+    max-width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5);
+  }
+
 /* hello */
 .userCard .welcome {
     background: #e6686a;
     color: white;
     padding: 3px 16px;
     line-height: 22px;
-    display: inline-block;
+    /* display: inline-block; */
     position: relative;
     /* width: 70px;
     height: 29px;
@@ -119,11 +129,6 @@ inherit	规定应该从父元素继承 position 属性的值。
 /* 自我介绍的文字和图片的外面的div */
 .userCard .pictureAndText {
     padding: 50px;
-    max-width: 600px;
-    border: 1px solid pink;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #ffffff;
 }
 /* 自我介绍的头像 */
 .userCard .picture {
