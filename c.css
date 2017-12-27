@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color:black;
+    background:#EFEFEF;
     margin: 0px;
     padding: 0px;
 }
@@ -15,24 +15,21 @@ a {
 }
 
 .topNavBar {
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 20px;
+    padding: 20px 0 20px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 
-.topNavBar a {
-    float: left;
+.topNavBar-inner {
+    padding: 0px 16px;
 }
 
-.topNavBar nav {
-    float: right;
-}
 
 .topNavBar .logo {
     font-family: "Hiragino Kaku Gothic Std";
-    font-size: 22px;
-    padding-top: 1px;
-    margin-top: 10px;
+    font-size: 30px;
 }
 
 .topNavBar .logo .rs{
@@ -67,13 +64,101 @@ a {
     border-bottom-color:#DC6465;
 }
 
+.banner {
+    height: 500px;
+    border: 1px solid rebeccapurple;
+    background-image: url(./img/wallhaven-589212.jpg);
+    background-position: center center;
+    background-size: cover;
+}
+
+.banner .mask {
+    height: 500px;
+    background-color:rgba(0, 0, 0, 0.5);
+}
+
+/*
+absolute	
+生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。
+元素的位置通过 "left", "top", "right" 以及 "bottom" 属性进行规定。
+fixed	
+生成绝对定位的元素，相对于浏览器窗口进行定位。
+元素的位置通过 "left", "top", "right" 以及 "bottom" 属性进行规定。
+relative	
+生成相对定位的元素，相对于其正常位置进行定位。
+因此，"left:20" 会向元素的 LEFT 位置添加 20 像素。
+static	默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）。
+inherit	规定应该从父元素继承 position 属性的值。
+*/
+/* hello */
+.userCard .welcome {
+    background: #e6686a;
+    color: white;
+    padding: 3px 16px;
+    line-height: 22px;
+    display: inline-block;
+    position: relative;
+    /* width: 70px;
+    height: 29px;
+    line-height: 29px;
+    text-align: center;*/
+}
+/* hello下面的三角 */
+.userCard .welcome .triangle {
+    display: block;
+    border: 10px solid transparent;
+    width: 0px;
+    /* border-left-color: #e6686a; */
+    border-left-color: #e6686a;;
+    border-top-width: 0px;
+    position: absolute;
+    top: 100%;
+    left: 5px;
+    /* 这里就能相对祖先的第一个进行定位  就是welcome */
+}
+/* 自我介绍的文字和图片的外面的div */
+.userCard .pictureAndText {
+    padding: 50px;
+    max-width: 600px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+}
+/* 自我介绍的头像 */
+.userCard .picture {
+}
+/* 自我介绍的文字总体 */
+.userCard .text {
+    margin-left: 50px;
+    width: 300px;
+}
+
+.userCard hr {
+    width: 251px;
+
+}
 
 
 
+.userCard .size {
+    font-size: 15px;
+    margin: 0px;
+}
 
+.userCard .userName {
+    font-size: 20px;
+}
 
-
-
+.userCard dl dt,.userCard dl dd {
+    float:left;
+}
+.userCard dl dt {
+    width: 30%;
+}
+.userCard dl dd {
+    width: 40%;
+}
 
 
 
