@@ -5,7 +5,7 @@
 }
 
 body {
-    background:#EFEFEF;
+    background:#efefef;
     margin: 0px;
     padding: 0px;
 }
@@ -141,10 +141,7 @@ inherit	规定应该从父元素继承 position 属性的值。
 
 .userCard hr {
     width: 251px;
-
 }
-
-
 
 .userCard .size {
     font-size: 15px;
@@ -160,13 +157,39 @@ inherit	规定应该从父元素继承 position 属性的值。
 }
 .userCard dl dt {
     width: 30%;
+    font-weight: bold;
 }
 .userCard dl dd {
     width: 40%;
+    color: gray;
+}
+
+.userCard > footer.footerView {
+     background: #e6686a;
+     text-align: center;
+ }
+
+
+.userCard > footer.footerView > a {
+    text-align: center;
+    height: 50px;
+    width: 50px;
+    line-height: 30px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 16px 16px;
+}
+
+.userCard > footer.footerView > a:hover{
+    background: azure;
 }
 
 
-
-
-
+.userCard svg{
+    width: 35px ;
+    height: 35px;
+    padding: 7.5px 0px;
+    /*margin: 0px 16px;*/
+    vertical-align: top;
+}
 
