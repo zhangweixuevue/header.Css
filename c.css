@@ -1,3 +1,5 @@
+
+
 .clearfix::after{
     content: '';
     display: block;
@@ -12,6 +14,11 @@ body {
 
 a {
     text-decoration: none;
+}
+
+ul,
+ol {
+    list-style: none;
 }
 
 .topNavBar {
@@ -79,13 +86,13 @@ a {
 }
 
 /*
-absolute	
+absolute
 生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。
 元素的位置通过 "left", "top", "right" 以及 "bottom" 属性进行规定。
-fixed	
+fixed
 生成绝对定位的元素，相对于浏览器窗口进行定位。
 元素的位置通过 "left", "top", "right" 以及 "bottom" 属性进行规定。
-relative	
+relative
 生成相对定位的元素，相对于其正常位置进行定位。
 因此，"left:20" 会向元素的 LEFT 位置添加 20 像素。
 static	默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）。
@@ -93,11 +100,11 @@ inherit	规定应该从父元素继承 position 属性的值。
 */
 
 .userCard {
+    box-shadow: 0px 2px 13px 0px rgba(0,0,0,0.75);
     max-width: 940px;
     margin-left: auto;
     margin-right: auto;
     background-color: #ffffff;
-    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5);
   }
 
 /* hello */
@@ -167,23 +174,21 @@ inherit	规定应该从父元素继承 position 属性的值。
 .userCard > footer.footerView {
      background: #e6686a;
      text-align: center;
- }
-
+}
 
 .userCard > footer.footerView > a {
-    text-align: center;
-    height: 50px;
-    width: 50px;
-    line-height: 30px;
-    border-radius: 50%;
-    display: inline-block;
-    margin: 16px 16px;
-}
+     text-align: center;
+     height: 50px;
+     width: 50px;
+     line-height: 30px;
+     border-radius: 50%;
+     display: inline-block;
+     margin: 16px 16px;
+ }
 
 .userCard > footer.footerView > a:hover{
     background: azure;
 }
-
 
 .userCard svg{
     width: 35px ;
@@ -192,4 +197,169 @@ inherit	规定应该从父元素继承 position 属性的值。
     /*margin: 0px 16px;*/
     vertical-align: top;
 }
+
+body > main {
+    margin-top: -350px;
+}
+
+body > main .downloadResume-wrapper  {
+    text-align: center;
+}
+body > main .downloadResume {
+    font-size: 14px;
+    line-height: 16px;
+    padding: 21px 55px;
+    border: 1px solid #CDCFD1;
+    background: #efefef;
+    display: inline-block;
+    border-radius: 2px;
+    color: #3d4451;
+    font-weight: bold;
+    margin: 32px 0;
+    transition: box-shadow 0.3s;
+}
+
+body > main .downloadResume:hover{
+    box-shadow: 0px 4px 13px 0px rgba(0,0,0,0.3);
+}
+
+.selfIntroduction {
+    max-width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-family: Kai;
+    font-size: 18px;
+}
+
+/*selfIntroduction*/
+section.skills,
+section.portfolio{
+    max-width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+}
+
+section.skills > h2,
+section.portfolio > h2{
+    text-align: center;
+    color: #3d4451;
+    font-size: 34px;
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+
+section.skills > h3{
+    font-size: 14px;
+    line-height: 1.1;
+    padding-right: 40px;
+    margin: 0px 0px;
+}
+
+section.skills > ol{
+    background: white;
+    box-shadow: 0px 4px 13px 0px rgba(0,0,0,0.3);
+    padding:20px;
+}
+
+section.skills > ol > li{
+    float: left;
+    width: 48%;
+}
+
+section.skills > ol > li:nth-child(even){
+    float: right;
+}
+
+section.skills .progressBar{
+    height: 3px;
+    background: #FAE1E1;
+    border-radius: 2px;
+}
+
+section.skills .progress{
+     height: 100%;
+     width: 30%;
+     background: #e6686a;
+     border-radius: 2px;
+}
+
+section.skills .first{
+    height: 100%;
+    width: 60%;
+    background: #e6686a;
+    border-radius: 2px;
+}
+
+section.portfolio {
+    text-align: center;
+}
+
+/*selfIntroduction*/
+section.portfolio > nav{
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+}
+
+section.portfolio > nav > ol {
+
+    margin: 0 auto;
+    padding-left: 0px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+
+section.portfolio > nav > ol > li {
+    float: left;
+    margin-left: 40px;
+}
+
+
+section.portfolio > nav > ol > li:nth-child(1) {
+    margin-left: 0px;
+}
+
+section.portfolio > nav .bar {
+    height:5px;
+    background: white;
+    margin-top: 5px;
+    margin-bottom: 60px;
+    border-radius: 2px;
+}
+
+section.portfolio > nav .bar-inner{
+    height:100%;
+    background: #e6686a;
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+
+section.portfolio > nav .bar.state-1 .bar-inner{
+    margin-left: 0;
+    width: 50px;
+}
+
+section.portfolio > nav .bar.state-2 .bar-inner{
+    margin-left: 63px;
+    width: 50px;
+}
+
+section.portfolio > nav .bar.state-3 .bar-inner{
+    margin-left: 140px;
+    width: 110px;
+}
+
+section.portfolio .works{
+    position: relative;
+}
+section.portfolio .works > .big,
+section.portfolio .works > .small {
+    position: absolute;
+}
+
+
 
