@@ -241,8 +241,8 @@ section.portfolio{
     margin-top: 60px;
 }
 
-section.skills > h2,
-section.portfolio > h2{
+section.portfolio > h2,
+section.skills > h2{
     text-align: center;
     color: #3d4451;
     font-size: 34px;
