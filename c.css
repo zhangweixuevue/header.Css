@@ -25,12 +25,21 @@ ol {
     top: 0;
     left: 0;
     width: 100%;
+    transition: all 0.5s;
+    color: #b7b7b7;
+}
+
+/* 动画效果部分 */
+.topNavBar.sticky{
+    background: white;
+    color: #3d4451;
+    padding: 10px 0px;
+    z-index: 1;
 }
 
 .topNavBar-inner {
     padding: 0px 16px;
 }
-
 
 .topNavBar .logo {
     font-family: "Hiragino Kaku Gothic Std";
@@ -57,17 +66,42 @@ ol {
 }
 
 .topNavBar nav a{
-    color: rgba(255, 255, 255, 0.7);
     font-weight: bold;
+    color: inherit;
 }
 
-.topNavBar nav ul>li>a{
+.topNavBar nav ul > li > a{ 
+    font-size: 12px; 
+    color: inherit; 
+    font-weight: bold; 
+    border-top: 3px solid transparent; 
     border-bottom: 3px solid transparent;
+    padding-top: 5px; 
+    padding-bottom: 5px; 
+    display: block; 
+    position: relative;}
+
+.topNavBar nav ul > li > a:hover::after {
+    content: '';
+    display: ruby;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #e06567;
+    height: 3px;
+    animation: menuSlide 0.4s;
 }
 
-.topNavBar nav ul>li>a:hover{
-    border-bottom-color:#DC6465;
-    margin-bottom: 5px;
+@keyframes menuSlide{
+    0%{
+        width: 0%;
+        
+    }
+    100%{
+        width: 100%;
+        
+    }
 }
 
 .banner {
@@ -358,6 +392,11 @@ section.portfolio .works > .big,
 section.portfolio .works > .small {
     position: absolute;
 }
+
+
+
+
+
 
 
 
