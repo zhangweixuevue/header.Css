@@ -51,7 +51,8 @@
             position: initial;
         }
         .site-welcome{
-            display: none;
+            /* display: flex; */
+            /* display: none; */
             position: fixed;
             top: 0;left: 0;width: 100%;height: 100%;
             background: #888888;
@@ -255,7 +256,10 @@
     </section>
 
     <script>
-        siteWelcome.classList.remove('active')
+        setTimeout(function(){
+            let idDiv = document.getElementById('siteWelcome')
+            idDiv.remove()
+        },3000)
     </script>
 </body>
 </html>
