@@ -8,91 +8,43 @@
     <link rel="stylesheet" href="./c.css">
     <script src="//at.alicdn.com/t/font_523765_urhfowf5mgr5dn29.js"></script>
     <style type="text/css">
-        .loading {
-            width: 200px;
-            height: 200px;
-
-            position: relative;
+        .loading{ width: 200px; height: 200px; position: relative; }
+        .loading::before,.loading::after{ content: ''; position: absolute; width: 0px; height: 0px; background: black; border-radius: 50%; top: 0; left: 0; bottom: 0; right: 0; margin: auto; animation: s 1.5s linear infinite; }
+        .loading::after{ animation-delay: 0.75s; }
+        @keyframes s{ 
+          0%{ width: 0px; height: 0px; opacity: 1; }
+          100%{ width: 100px; height: 100px; opacity: 0; }
         }
-
-        .loading::before, .loading::after {
-            content: '';
-            position: absolute;
-            height: 0px;
-            background: black;
-            border-radius: 50%;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            margin: auto;
-            animation: s 1.5s linear infinite;
-        }
-        .loading::after{
-            animation-delay: 0.75s;
-        }
-
-        @keyframes s{
-            0%{
-                width: 0px; height: 0px; opacity: 1;
-            }
-            100%{
-                width: 100px;height: 100px;opacity: 0;
-            }
-        }
-
-        .icon {
-           width: 1em; height: 1em;
-           vertical-align: -0.15em;
-           fill: currentColor;
-           overflow: hidden;
-        }
-        .loading {
-            position: initial;
-        }
-        .site-welcome{
-            /* display: flex; */
-            display: none;
-            position: fixed;
-            top: 0;left: 0;width: 100%;height: 100%;
-            background: #888888;
-            z-index: 1;
-            justify-content: center;
-            align-items: center;
-        }
-        .site-welcome.active{
-            display: flex;
-        }
-        
+        .icon { width: 1em; height: 1em; vertical-align: -0.15em; fill: currentColor; overflow: hidden; }
+        .site-welcome{ display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #888; z-index: 1; justify-content: center; align-items: center; }
+        .site-welcome.active{ display: flex; }
     </style>
 </head>
 <body>
     <div id="siteWelcome" class="site-welcome active">
-        <div class="loading"></div> 
-    </div>
-    
+        <div class="loading"></div>
+      </div>
     <div id="topNavBar" class="topNavBar">
         <div class="topNavBar-inner clearfix">
-            <a class="logo" style="float:left;">
+            <a class="logo" style="float:left">
                 <span class="rs">RS</span>
                 <span class="card">card</span>
             </a>
-            <nav style="float:right;">
+            <nav class="menu" style="float:right">
                 <ul class="clearfix">
-                    <li><a href="#">关于</a></li>
-                    <li><a href="#">技能</a></li>
-                    <li>
-                        <a href="#">作品</a>
-                        <ul>
-                            <li>作品 1</li>
-                            <li>作品 2</li>
-                            <li>作品 3</li>
-                        </ul>
-                    </li>
-                    <li><a href="#">博客</a></li>
-                    <li><a href="#">日历</a></li>
-                    <li><a href="#">联系方式</a></li>
-                    <li><a href="#">其他</a></li>
+                <li>
+                    <a href="#siteAbout">关于</a>
+                    
+                <li><a href="#siteSkills">技能</a></li>
+                <li>
+                    <a href="#siteWorks">作品</a>
+                    
+                </li>
+                </li>
+                <li><a href="#">博客</a></li>
+                <li><a href="#">日历</a></li>
+                <li><a href="#">联系方式</a></li>
+                <li><a href="#">其他</a></li>
                 </ul>
             </nav>
         </div>
@@ -102,7 +54,7 @@
         <div class="mask"></div>
     </div>
 
-    <main>
+    <main id="siteAbout">
         <div class="userCard">
             <div class="pictureAndText clearfix">
                 <div class="picture" style="float:left">
@@ -169,7 +121,8 @@
     </main>
 
 <!--技能区域模块-->
-<section class="skills">
+
+<section id="siteSkills" class="skills">
     <h2>技能</h2>
     <ol class="clearfix">
         <li>
@@ -223,7 +176,7 @@
         </li>
     </ol>
 </section>
-    <section class="portfolio">
+    <section id="siteWorks" class="portfolio">
         <h2>作品</h2>
         <nav>
             <ol class="clearfix">
@@ -261,22 +214,29 @@
             </div>
         </div>
     </section>
-
     <script>
         setTimeout(function(){
-            let idDiv = document.getElementById('siteWelcome')
-            idDiv.remove()
-            // topNavBar.classList.remove('siteWelcome')
+        siteWelcome.classList.remove('active')    
         },1000)
-        //用户滚动
-        window.onscroll = function() {
-            //每次滚动获取y的距离 然后做导航状态变化
-            if (window.scrollY > 0) {
-                topNavBar.classList.add('sticky')
-            } else {
-                topNavBar.classList.remove('sticky')
+        window.onscroll = function(){
+            if(window.scrollY > 0){
+               topNavBar.classList.add('sticky')
+            }else{
+               topNavBar.classList.remove('sticky')
             }
         }
+        let aTags = document.querySelectorAll('nav.menu > ul > li > a')
+        for(let i = 0; i < aTags.length; i++) {
+            aTags[i].onclick = function(x){
+                x.preventDefault()//阻止默认样式 我们帮忙滚
+                let a = x.currentTarget
+                let href = a.getAttribute('href')
+                let element = document.querySelector(href)
+                let top = element.offsetTop
+                window.scrollTo(0,top - 80)
+            }
+        }
+        
     </script>
 </body>
 </html>
