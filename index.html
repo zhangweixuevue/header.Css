@@ -23,7 +23,7 @@
 <body>
     <div id="siteWelcome" class="site-welcome active">
         <div class="loading"></div>
-      </div>
+    </div>
     <div id="topNavBar" class="topNavBar">
         <div class="topNavBar-inner clearfix">
             <a class="logo" style="float:left">
@@ -33,7 +33,7 @@
             <nav class="menu" style="float:right">
                 <ul class="clearfix">
                 <li>
-                    <a href="#siteAbout">关于</a>
+                    <a href="#userCard">关于</a>
                     
                 <li><a href="#siteSkills">技能</a></li>
                 <li>
@@ -55,7 +55,7 @@
     </div>
 
     <main id="siteAbout">
-        <div class="userCard">
+        <div data-x id="userCard" class="userCard">
             <div class="pictureAndText clearfix">
                 <div class="picture" style="float:left">
                     <img src="./img/WechatIMG142.jpg" width="250px" height="300px" alt="头像">
@@ -120,63 +120,62 @@
         </p>
     </main>
 
-<!--技能区域模块-->
-
-<section id="siteSkills" class="skills">
-    <h2>技能</h2>
-    <ol class="clearfix">
-        <li>
-            <div style="padding: 10px">
-                <h3>HTML 5 &amp; CSS 3</h3>
+    <!--技能区域模块-->
+    <section data-x id="siteSkills" class="skills">
+        <h2>技能</h2>
+        <ol class="clearfix">
+            <li>
+                <div style="padding: 10px">
+                    <h3>HTML 5 &amp; CSS 3</h3>
+                    <div class="progressBar">
+                        <div class="progress first"></div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div style="padding: 10px">
+                <h3>JavaScript</h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+                </div>
+            </li>
+            <li>
+                <div style="padding: 10px">
+                <h3>jQuery</h3>
                 <div class="progressBar">
                     <div class="progress first"></div>
                 </div>
+                </div>
+            </li>
+            <li>
+                <div style="padding: 10px">
+                <h3>vue</h3>
+                <div class="progressBar">
+                    <div class="progress first"></div>
+                </div>
+                </li>
             </div>
-        </li>
-        <li>
-            <div style="padding: 10px">
-            <h3>JavaScript</h3>
-            <div class="progressBar">
-                <div class="progress"></div>
-            </div>
-            </div>
-        </li>
-        <li>
-            <div style="padding: 10px">
-            <h3>jQuery</h3>
-            <div class="progressBar">
-                <div class="progress first"></div>
-            </div>
-            </div>
-        </li>
-        <li>
-            <div style="padding: 10px">
-            <h3>vue</h3>
-            <div class="progressBar">
-                <div class="progress first"></div>
+            <li>
+                <div style="padding: 10px">
+                <h3>React</h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+                </div>
+            </li>
+            </li>
+            <li>
+                <div style="padding: 10px">
+                <h3>HTTP</h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
             </div>
             </li>
-        </div>
-        <li>
-            <div style="padding: 10px">
-            <h3>React</h3>
-            <div class="progressBar">
-                <div class="progress"></div>
-            </div>
-            </div>
-        </li>
-        </li>
-        <li>
-            <div style="padding: 10px">
-            <h3>HTTP</h3>
-            <div class="progressBar">
-                <div class="progress"></div>
-            </div>
-        </div>
-        </li>
-    </ol>
-</section>
-    <section id="siteWorks" class="portfolio">
+        </ol>
+    </section>
+    <section data-x id="siteWorks" class="portfolio">
         <h2>作品</h2>
         <nav>
             <ol class="clearfix">
@@ -214,6 +213,8 @@
             </div>
         </div>
     </section>
+    <!-- 添加scr动画类 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.1.1/Tween.min.js"></script>
     <script>
         setTimeout(function(){
         siteWelcome.classList.remove('active')    
@@ -224,18 +225,128 @@
             }else{
                topNavBar.classList.remove('sticky')
             }
+
+            //之后滚动的时候上面标签默认高亮
+            let speciaTags = document.querySelectorAll('[data-x]')
+            //
+            var one = 0
+            var two = 0
+            var three = 0
+            for(let i = 0;i<speciaTags.length;i++){
+                //这里有个逻辑 判断谁的值距离window.scrollY最近就先显示对应的值高亮
+                if (i==0){
+                    one = Math.abs(speciaTags[i].offsetTop - window.scrollY)
+                } else if (i==1) {
+                    two = Math.abs(speciaTags[i].offsetTop - window.scrollY)
+                } else if (i==2) {
+                    three = Math.abs(speciaTags[i].offsetTop - window.scrollY)
+                }
+            }
+
+            let minIndex = 0
+            if (one < two && one < three) {
+                minIndex = 0   
+            } else if  (two < one && two < three) {
+                minIndex = 1
+            } else if  (three < two && three < one) {
+                minIndex = 2
+            }
+
+            for (let i = 0;i<3;i++){
+                speciaTags[i].classList.remove('active')
+            }
+            speciaTags[minIndex].classList.add('active')
+
+            let id = speciaTags[minIndex].id
+            console.log(id)
+            //找标签
+            let a = document.querySelector('a[href="#' + id + '"]')
+            let li = a.parentNode
+            let brothersAndMe = li.parentNode.children
+            for (let i =0;i<brothersAndMe.length;i++){
+                brothersAndMe[i].classList.remove('active')
+            }
+            li.classList.add('active')
         }
+
         let aTags = document.querySelectorAll('nav.menu > ul > li > a')
-        for(let i = 0; i < aTags.length; i++) {
-            aTags[i].onclick = function(x){
-                x.preventDefault()//阻止默认样式 我们帮忙滚
-                let a = x.currentTarget
-                let href = a.getAttribute('href')
-                let element = document.querySelector(href)
-                let top = element.offsetTop
-                window.scrollTo(0,top - 80)
+        function animate(time) {
+            requestAnimationFrame(animate);
+            TWEEN.update(time);
+        }
+        requestAnimationFrame(animate);
+        
+        for(let i=0; i<aTags.length; i++){
+        aTags[i].onclick = function(x){
+            x.preventDefault()   
+            let a = x.currentTarget
+            let href = a.getAttribute('href') //'#siteAbout'
+            let element = document.querySelector(href)
+            let top = element.offsetTop
+            let currentTop = window.scrollY  //当前位置
+            let targetTop = top - 80         //需要滚动位置
+            let s = targetTop - currentTop   // 路程
+            var coords = { y: currentTop};   // 起始位置
+            var t = Math.abs((s/100)*300)    // 时间
+            if(t>500){ t = 500 }
+            var tween = new TWEEN.Tween(coords) // 起始位置
+                .to({ y: targetTop}, t)             // 结束位置 和 时间
+                .easing(TWEEN.Easing.Cubic.InOut)   // 缓动类型
+                .onUpdate(function() {
+                    // coords.y 已经变了
+                    window.scrollTo(0,coords.y)     // 如何更新界面
+                })
+            .start(); // 开始缓动
             }
         }
+        // let aTags = document.querySelectorAll('nav.menu > ul > li > a')
+        // function animate(time) {
+        //     requestAnimationFrame(animate);
+        // TWEEN.update(time);
+        // }
+        // requestAnimationFrame(animate);
+
+        // for (let i=0; i<aTags.length; i++) {
+        //    aTags[i].onclick = function(a){
+        //        a.preventDefault()//禁止默认点击
+        //        let target = a.currentTarget
+        //        let href = target.getAttribute('href')//获取对应标签
+        //        let element = document.querySelector(href)
+        //        let top = element.offsetTop     //这里的top是点击该标签对应的高度
+
+        //     //    let currentTop = window.screenY //当前y坐标
+        //     //    let targetTop = top - 80        //要滚动的坐标
+        //     //    let s = targetTop - currentTop  //需要滚动的距离  
+        //     //    var t = Math.abs((s/100)*300)   //滚动的时间
+        //     //    if (t>500){ t = 500}            //如果时间比0.5秒还要大 就不让他滚这么久
+        //     //    var tween = new TWEEN.Tween({ y: currentTop})  //起始位置
+        //     //         .to({ y:targetTop}, t)     //结束位置  和时间
+        //     //         .easing(TWEEN.easing.Cubic.InOut) //缓动类型
+        //     //         .onUpdate(function(){
+        //     //             //y轴已经在变化
+        //     //             window.scrollTo(0,coords.y) //跟新界面
+        //     //         })
+        //     //         .start()
+        //        let n = 25 //动多少次
+        //        let duration = 500 / n //多长时间动完
+        //        let currentTop = window.scrollY //获取当前的y坐标
+        //        let scrollTop = top - 80 //需要滚动到的坐标
+        //        let distance = (scrollTop - currentTop) / n//25次 每次动多少
+        //        console.log(currentTop)
+        //        console.log(scrollTop)
+        //        console.log(distance)
+        //        let i = 0
+        //        let id = setInterval(()=> {
+        //            if (i===n) {
+        //                window.clearInterval(id)
+        //                return
+        //            }
+        //            i = i + 1
+        //            window.scrollTo(0,currentTop + distance * i)
+        //        },duration)
+
+        //    }
+        // }
         
     </script>
 </body>

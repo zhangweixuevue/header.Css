@@ -43,6 +43,10 @@ ol {
     padding-bottom: 4px; 
 }
 
+[data-x].active {
+   
+}
+
 .topNavBar .logo .rs{
     margin-right: 4px; 
     color: #e6686a; 
@@ -82,17 +86,19 @@ ol {
     position: relative;
 }
 
-.topNavBar nav ul > li > a:hover::after{
+.topNavBar nav ul > li > a:hover::after,
+.topNavBar nav > ul > li.active > a::after {
     content: '';
-  display: block;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  background: #e06567;
-  height: 3px;
-  animation: menuSlide .3s;
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #e06567;
+    height: 3px;
+    animation: menuSlide .3s;
 }
+
 @keyframes menuSlide{
     0%{ width: 0; }
     100%{ width: 100%; }
@@ -101,7 +107,7 @@ ol {
 .topNavBar .submenu > li{
     white-space: nowrap;
     padding: 5px 10px;
-  }
+}
 
 
 .banner {
@@ -168,6 +174,7 @@ inherit	规定应该从父元素继承 position 属性的值。
 /* 自我介绍的文字和图片的外面的div */
 .userCard .pictureAndText {
     padding: 50px;
+    
 }
 /* 自我介绍的头像 */
 .userCard .picture {
@@ -280,6 +287,7 @@ section.skills > h2{
     font-size: 34px;
     line-height: 1.2;
     font-weight: 600;
+    
 }
 
 
@@ -392,5 +400,4 @@ section.portfolio .works > .big,
 section.portfolio .works > .small {
     position: absolute;
 }
-
 
